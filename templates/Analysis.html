@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+     body{
+      font-family: 'Open Sans', sans-serif;
+     }
+     .gradient-custom {
+            /* fallback for old browsers */
+            background: #3BB4FD;
+    
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right bottom, #90ee90, #f8f8ff);
+    
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right bottom, #90ee90, #f8f8ff);
+        }
+    </style>
+
+
+</head>
+<body style=" background: linear-gradient(to right bottom, #90ee90, #f8f8ff);" >
+  <section  >
+    {% if context.analysis %}
+    <div class="container text-center py-5">
+      <h1><b>{{ context.analysis.grpname }}</b><br><h4>Group Name</h4></h1>
+      <br>
+      <div class="row">
+        <div class="col">
+      <h5><b>{{ context.analysis.startDate }}</b><br><h6>Starting Date</h6></h5>
+        </div>
+        <div class="col">
+      <h5><b>{{ context.analysis.endDate }}</b><br><h6>End Date</h6></h5>
+        </div>
+      </div>
+    </div>
+    <hr>
+    {% endif %}
+    {% if context.analysis %}
+    <div class="container text-center">
+      </b><h2 class="mb-5">General Analysis</h2>
+      <div class="row ">
+      <div class="col">
+        <h5 class="mb-3"><h3><b>{{ context.analysis.totalMessages }}</b></h3>Total Messages </h5>
+      </div>
+      <div class="col">
+        <h5 class="mb-3"> <h3> <b>{{ context.analysis.mediacount }}</b></h3>Total Media </h5>
+      </div>
+
+      <div class="col">
+        <h5 class="mb-3"><h3><b>{{ context.analysis.emojiCount }}</b></h3>  Emoji Count</h5></div>
+      <div class="col">
+        <h5 class="mb-3"><h3><b>{{ context.analysis.mostEmoji }}</b></h3>  Most used Emoji</h5>
+      </div>
+      <div class="col">
+        <h5 class="mb-3"><h3><b>{{ context.analysis.uniqueEmoji }}</b></h3> No. of unique Emojis </h5>
+      </div>
+      </div>
+    </div>
+    <hr>
+    {% endif %}
+    {% if context.analysis %}
+    <div class="container text-center">
+      <h3 class="mb-4"><b> Users In Group </b></h3>
+          <div class=" row mb-2" id="conversation-users"></div>
+    </div>
+    {% endif %}
+    <hr>
+    <div class="container-fluid text-center">
+      <div class="row">
+        <div class="col mb-5">
+          <div class="container text-center mb-5">
+            <h4>Messages v/s Users</h4>
+          </div>
+          <!-- <img src="{{url_for('static', filename='fig1.png')}}" alt="" style="width: 70%;"> -->
+          <iframe src="./static/fig1.html" height="400px" width="600px" frameborder="0" style="background-color:  linear-gradient(to left top,#d9ecc7, #07a3b2);;"></iframe>
+
+        </div>
+        
+        <div class="col mb-5">
+          <div class="contaier text-center mb-5">
+            <h4>Number of media files v/s Users</h4>
+          </div>
+          <!-- <img src="{{url_for('static', filename='fig2.png')}}" alt="" style="width: 70%;"> -->
+          <iframe src="./static/fig2.html"  height="400px" width="600px" frameborder="0"></iframe>
+        </div>
+        </div>
+        <hr>
+        <div class="w-100"></div>
+      <div class="row mb-5">
+        <div class="col">
+          <div class="container text-center  py-3  mb-5">
+            <h4>Users Activity by Hours</h4>
+          </div>
+          <!-- <img src="{{url_for('static', filename='fig3.png')}}" alt="" style="width: 70%; height: 60%;"> -->
+          <iframe src="./static/fig3.html" height="400px" width="600px" frameborder="0"></iframe>
+        </div>
+        <hr>
+        <div class="w-100"></div>
+        <div class="col mb-5">
+          <div class="contaier text-center mb-5">
+            <h4>User Activity by day</h4>
+          </div>
+          <!-- <img src="{{url_for('static', filename='fig4.png')}}" alt="" style="width: 70%;"> -->
+          <iframe src="./static/fig4.html" height="400px" width="600px" frameborder="0"></iframe>
+        </div>
+        <div class="col mb-5">
+          <div class="contaier text-center mb-5">
+            <h4>Number Messages per month</h4>
+          </div>
+          <iframe src="./static/fig5.html" height="400px" width="500px" frameborder="0"></iframe>
+
+        </div>
+      </div>
+        <div class="col mb-5">
+          <div class="contaier text-center mb-5">
+            <h4>Number Emojis per month</h4>
+          </div>
+          <iframe src="./static/fig6.html" height="400px" width="500px" frameborder="0"></iframe>
+
+        </div>
+        <div class="col mb-5">
+          <div class="contaier text-center mb-5">
+            <h4>Word Cloud of the complete chat</h4>
+          </div>
+          <img src="{{url_for('static', filename='fig7.png')}}" alt="" style="width: 70%;">
+
+        </div>
+      </div>
+    <hr>
+    <div class="container text-center">
+        <h3>Sentiment Analysis</h3>
+      <br><br>
+      <div class="row mb-5">
+        <div class="col ">
+          <h3>Top Positve Texts.</h3>
+        </div>
+        <div class="col ">
+          <h3>Top Neutral Texts.</h3>
+        </div>
+        <div class="col">
+          <h3>Top Negative Texts.</h3>
+        </div>
+      </div>
+      <div class="row mb-5">
+        {% for i in text %}
+        <div class="col  mb-5">
+          {%for j in i%}
+          <h6>{{loop.index}}. {{j}}</h6>
+          {%endfor%}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="row mb-5">
+        <div class="col">
+          <h3>Offensive Texts (Cyberbullying instances)</h3>
+        </div>
+      </div>
+      <div class="row mb-5">
+        {% for i in res %}
+        <div class="col  mb-5">
+          {%for j in i%}
+          <h6>{{loop.index}}. {{j}}</h6>
+          {%endfor%}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="container text-center mb-4">
+        <h3 class="mb-4"> Press below for Date-wise Analysis</h3>
+        <a href="http://127.0.0.1:5000/range" class="btn btn-lg btn-warning"> Click Here</a>
+
+      </div>
+    </div>
+    <br><br>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+    <script>
+      var split_users = "{{context.analysis.users|safe}}";
+      var userCount = "{{context.analysis.userCount}}";
+      const users= split_users.slice(1,-1).split(",");
+      var usersDisplay = document.getElementById("conversation-users");
+      
+   for(var i = 0; i < userCount; i++) {
+       userElement = document.createElement('div');
+       userElement.classList.add('col')
+       userElement.innerHTML = users[i].trim().slice(1,-1);
+       // userElement.style.color = colorSet[i];
+       if(i%4==0){
+        var brak = document.createElement('div');
+        brak.classList.add('w-100');
+          usersDisplay.innerHTML += brak.outerHTML;
+       }
+       usersDisplay.innerHTML +=  userElement.outerHTML;
+   }
+   </script>
+   </section>
+</body>
+
+</html>
